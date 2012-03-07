@@ -1,46 +1,53 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"> 
 <html>
     <head>
+        <meta http-equiv='content-type' content='text/html; charset=utf-8'>
         <link rel='stylesheet' type='text/css' href='css/style.css' />
         <script type='text/javascript' src='js/hci.js'></script>
         <script type="text/javascript">
             window.onscroll = function() {
 				var y = hci.currentY();
-                var topBar = document.getElementById("navBar");
+                var topBar = document.getElementById('navBar');
+                var navTips = document.getElementById('tips');
                 var navContent = document.getElementById('content');
                 var elemStyle = topBar.style;
                 if(y > 150) {
                     if(elemStyle.position != 'fixed') {
 
                         elemStyle.position = 'fixed';
-                        elemStyle.top = '0px';
                         elemStyle.left = '0px';
                         elemStyle.right = '0px';
-                        navContent.style.display = 'none';
+                        navTips.style.display = 'none';
+                        navContent.style.display = 'block';
 
-                        var from = 0;
-                        var to = 50; 
+                        var from = -50;
+                        var to = 0; 
                         function ontween(pos) {
-                            elemStyle.height = from + (to - from) * pos + 'px';
+                            elemStyle.top = from + (to - from) * pos + 'px';
                         };
                         function onend(pos) {
                             ontween(pos);
-                            navContent.style.display = 'block';
                         };
                         hci.fx(ontween, onend, 1000);
+
                     }
                 }
                 if (y < 100) {
                     elemStyle.position = '';
+                    navContent.style.display = 'none';
+                    navTips.style.display = 'block';
                 }
             };
         </script> 
     </head>
     <body>
         <div id='header'>
-            <div id='title'><span>This is a Fixed Navigate Bar Demo</span></div>
+            <div id='title'><h1>This is a Fixed Navigate Bar Demo</h1></div>
         </div>
-        <div id="navBar"><p id='content'>Please Scroll this Page!</p></div>
+        <div id="navBar">
+            <p id='tips'>Please Scroll this Page!</p>
+            <p id='content'>我听闻今天是女生节，So，节日快乐吧：）</p>
+        </div>
         <div><p>Hello Wprld</p></div>
         <div><p>Hello Wprld</p></div>
         <div><p>Hello Wprld</p></div>
