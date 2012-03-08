@@ -131,12 +131,6 @@ var hci = {
         return { engine: engine,browser: browser, system: system };
 
     }(),
-    currentY:  function() {
-       var y = -1;
-       var userAgent = navigator.userAgent;
-       y = document.body.scrollTop ? document.body.scrollTop : document.documentElement.scrollTop;
-       return y;
-    },
     fx: function(ontween, onend, duration, callback) {
             var pos, runTime, startTime = + new Date,
             timer = setInterval(function() {
