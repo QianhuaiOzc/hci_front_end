@@ -7,9 +7,10 @@
         <script type="text/javascript">
             window.onscroll = function() {
 				var y = hci.currentY();
-                var topBar = document.getElementById('navBar');
-                var navTips = document.getElementById('tips');
-                var navContent = document.getElementById('content');
+                var doc = document;
+                var topBar = doc.getElementById('navBar');
+                var navTips = doc.getElementById('tips');
+                var navContent = doc.getElementById('content');
                 var elemStyle = topBar.style;
                 if(y > 150) {
                     if(elemStyle.position != 'fixed') {
