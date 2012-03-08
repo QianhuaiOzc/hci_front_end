@@ -22,6 +22,12 @@ h1 {
     font-size: 2em;
 }
 
+.fix {
+    position: fixed;
+    left: 0px;
+    right: 0px;
+}
+
 #header {
     height: 100px;
     width: 100%;

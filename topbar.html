@@ -13,11 +13,9 @@
                 var navContent = doc.getElementById('content');
                 var elemStyle = topBar.style;
                 if(y > 150) {
-                    if(elemStyle.position != 'fixed') {
+                    if(topBar.className != 'fix') {
 
-                        elemStyle.position = 'fixed';
-                        elemStyle.left = '0px';
-                        elemStyle.right = '0px';
+                        topBar.className = 'fix';
                         navTips.style.display = 'none';
                         navContent.style.display = 'block';
 
@@ -34,7 +32,7 @@
                     }
                 }
                 if (y < 100) {
-                    elemStyle.position = '';
+                    topBar.className = '';
                     navContent.style.display = 'none';
                     navTips.style.display = 'block';
                 }
