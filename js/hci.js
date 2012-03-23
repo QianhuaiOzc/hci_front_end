@@ -1,4 +1,20 @@
-var hci = {
+(function() {
+    hci = function() {};
+    hci.fx =  function(ontween, onend, duration) {
+            var pos, runTime, startTime = + new Date,
+            timer = setInterval(function() {
+                runTime = + new Date - startTime;
+                pos = runTime / duration;
+
+                if(pos >= 1) {
+                    clearInterval(timer);
+                    onend(pos);
+                } else {
+                    ontween(pos);
+                };
+            }, 13);
+    };
+
     /*
      * userAgent代理的对象,包含了浏览器,浏览器引擎和用户平台三个属性
      * {
@@ -7,7 +23,7 @@ var hci = {
      *      system:     system
      * };
      */
-    client: function() {
+    var checkClient = function() {
         var engine = {
             ie: 0,
             gecko: 0,
@@ -130,19 +146,7 @@ var hci = {
         
         return { engine: engine,browser: browser, system: system };
 
-    }(),
-    fx: function(ontween, onend, duration, callback) {
-            var pos, runTime, startTime = + new Date,
-            timer = setInterval(function() {
-                runTime = + new Date - startTime;
-                pos = runTime / duration;
-
-                if(pos >= 1) {
-                    clearInterval(timer);
-                    onend(pos);
-                } else {
-                    ontween(pos);
-                };
-            }, 13);
-    }
-}
+    };
+    hci.client = checkClient();
+    return hci;
+})();
